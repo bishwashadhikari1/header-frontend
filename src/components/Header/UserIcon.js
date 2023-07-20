@@ -1,11 +1,10 @@
-// src/components/Header/UserIcon.js
 import React from 'react';
 
 // The UserIcon component
 const UserIcon = ({ user, handleLoginLogout }) => (
   <div onClick={handleLoginLogout}>
     {user ? (
-      <img src={user.icon} alt="User Icon" />
+      <i className="fas fa-user"></i>
     ) : (
       <span>Login / Sign Up </span> 
     )}
