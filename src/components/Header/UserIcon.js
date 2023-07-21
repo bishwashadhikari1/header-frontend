@@ -1,12 +1,16 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-// The UserIcon component
 const UserIcon = ({ user, handleLoginLogout }) => (
   <div onClick={handleLoginLogout}>
     {user ? (
-      <i className="fas fa-user"></i>
+      <Link to="/profile">
+        <i className="fas fa-user"></i>
+      </Link>
     ) : (
-      <span>Login / Sign Up </span> 
+      <Link to="/login">
+        <span>Login / Sign Up</span>
+      </Link>
     )}
   </div>
 );
