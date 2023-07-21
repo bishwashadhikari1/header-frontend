@@ -1,9 +1,11 @@
+// Header.js
 import React, { useState } from 'react';
 import Logo from './Logo';
 import Navigation from './Navigation';
 import SearchBar from './SearchBar';
 import UserIcon from './UserIcon';
 import Community from './Community';
+import HamburgerMenu from './HamburgerMenu'; 
 
 // The Header component
 const Header = () => {
@@ -14,11 +16,9 @@ const Header = () => {
   const handleLoginLogout = () => setUser(user ? null : { icon: 'url-to-user-icon' });
 
   return (
-    <header className="flex justify-between items-center p-4 text-grey shadow">
+    <header className="relative sticky top-0 z-50 flex justify-between items-center p-4 text-grey shadow">
       {/* Hamburger menu */}
-      <div className="text-xl">
-        <i className="fas fa-bars"></i>
-      </div>
+      <HamburgerMenu />
 
       {/* Logo */}
       <Logo />
@@ -31,7 +31,6 @@ const Header = () => {
 
       {/* Community icon */}
       <Community />
-
 
       {/* User icon or login/signup */}
       <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
