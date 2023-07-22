@@ -1,11 +1,10 @@
-// Header.js
 import React, { useState } from 'react';
 import Logo from './Logo';
 import Navigation from './Navigation';
 import SearchBar from './SearchBar';
 import UserIcon from './UserIcon';
 import Community from './Community';
-import HamburgerMenu from './HamburgerMenu'; 
+import HamburgerMenu from './HamburgerMenu';
 
 // The Header component
 const Header = () => {
@@ -16,25 +15,34 @@ const Header = () => {
   const handleLoginLogout = () => setUser(user ? null : { icon: 'url-to-user-icon' });
 
   return (
-    <header className="relative sticky top-0 z-50 flex justify-between items-center p-4 text-grey shadow">
-      {/* Hamburger menu */}
-      <HamburgerMenu />
+    <>
+      <header className="fixed top-0 z-50 bg-white flex justify-between items-center p-4 shadow w-full">
+        {/* Hamburger menu */}
+        <HamburgerMenu />
 
-      {/* Logo */}
-      <Logo />
+        {/* Logo */}
+        <Logo />
 
-      {/* Search bar */}
-      <SearchBar />
+        {/* Search bar */}
+        <SearchBar />
 
-      {/* Navigation */}
-      <Navigation />
+        {/* Navigation */}
+        <div className="hidden sm:flex">
+          <Navigation />
+        </div>
 
-      {/* Community icon */}
-      <Community />
+        {/* Community icon */}
+        <Community />
 
-      {/* User icon or login/signup */}
-      <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
-    </header>
+        {/* User icon or login/signup */}
+        <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
+      </header>
+      
+      {/* Subheader for small screens */}
+      <header className="fixed top-16 z-40 bg-white flex justify-center items-center p-2 sm:p-1 shadow w-full sm:hidden">
+        <Navigation />
+      </header>
+    </>
   );
 };
 
