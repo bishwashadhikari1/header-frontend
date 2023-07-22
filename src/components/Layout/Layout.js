@@ -6,7 +6,9 @@ import Header from '../Header/Header';
 const Layout = ({ children }) => (
   <>
     <Header />
-    {children}
+    <main className="pt-40 sm:pt-36 md:pt-36 lg:pt-32 xl:pt-36">
+      {children}
+    </main>
   </>
 );
 

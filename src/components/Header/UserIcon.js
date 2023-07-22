@@ -9,7 +9,9 @@ const UserIcon = ({ user, handleLoginLogout }) => (
       </Link>
     ) : (
       <Link to="/login">
-        <span>Login / Sign Up</span>
+        <div className="text-xs sm:text-xs md:text-base">
+          <span>Login / Sign Up</span>
+        </div>
       </Link>
     )}
   </div>
