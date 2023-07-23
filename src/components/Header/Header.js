@@ -10,6 +10,7 @@ import HamburgerMenu from './HamburgerMenu';
 const Header = () => {
   // Using useState to handle login status
   const [user, setUser] = useState(null);
+  const [searchActive, setSearchActive] = useState(false);
 
   // This function will be passed down to the UserIcon component to handle login/logout events
   const handleLoginLogout = () => setUser(user ? null : { icon: 'url-to-user-icon' });
@@ -18,24 +19,34 @@ const Header = () => {
     <>
       <header className="fixed top-0 z-50 bg-white flex justify-between items-center p-4 shadow w-full">
         {/* Hamburger menu */}
-        <HamburgerMenu />
+        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
+          <HamburgerMenu />
+        </div>
 
         {/* Logo */}
-        <Logo />
+        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
+          <Logo />
+        </div>
 
         {/* Search bar */}
-        <SearchBar />
+        <div className={`flex justify-center ${searchActive ? 'w-full' : ''}`}>
+          <SearchBar setSearchActive={setSearchActive} />
+        </div>
 
         {/* Navigation */}
-        <div className="hidden sm:flex">
+        <div className={`hidden sm:flex ${searchActive ? 'hidden' : 'block'}`}>
           <Navigation />
         </div>
 
         {/* Community icon */}
-        <Community />
+        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
+          <Community />
+        </div>
 
         {/* User icon or login/signup */}
-        <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
+        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
+          <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
+        </div>
       </header>
       
       {/* Subheader for small screens */}
@@ -47,3 +58,4 @@ const Header = () => {
 };
 
 export default Header;
+
