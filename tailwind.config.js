@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -12,9 +11,16 @@ module.exports = {
           700: '#276749',
         },
         zIndex: {
-            '50': '50',
-        }
+          '50': '50',
+        },
       },
+      screens: {
+        'sm': '640px',
+        'md': '960px',   
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      }
     },
   },
   plugins: [],

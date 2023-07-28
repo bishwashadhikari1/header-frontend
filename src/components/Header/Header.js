@@ -17,38 +17,44 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 z-50 bg-white flex justify-between items-center p-4 shadow w-full">
-        {/* Hamburger menu */}
-        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
-          <HamburgerMenu />
-        </div>
+      <header className="fixed top-0 z-50 bg-white flex items-center p-4 shadow w-full">
+        {/* Left group (Hamburger menu, Logo, and Search bar) */}
+        <div className={`flex items-center space-x-4 ${searchActive ? 'w-full' : ''}`}>
+          {/* Hamburger menu */}
+          <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
+            <HamburgerMenu />
+          </div>
 
-        {/* Logo */}
-        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
-          <Logo />
-        </div>
+          {/* Logo */}
+          <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
+            <Logo />
+          </div>
 
-        {/* Search bar */}
-        <div className={`flex justify-center ${searchActive ? 'w-full' : ''}`}>
-          <SearchBar setSearchActive={setSearchActive} />
+          {/* Search bar */}
+          <div className="flex justify-center">
+            <SearchBar setSearchActive={setSearchActive} />
+          </div>
         </div>
 
         {/* Navigation */}
-        <div className={`hidden sm:flex ${searchActive ? 'hidden' : 'block'}`}>
+        <div className={`hidden sm:flex ml-8 ${searchActive ? 'hidden' : 'block'}`}>
           <Navigation />
         </div>
 
-        {/* Community icon */}
-        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
-          <Community />
-        </div>
+        {/* Right group (Community icon and User icon or login/signup) */}
+        <div className={`ml-auto flex items-center space-x-4 ${searchActive ? 'hidden' : ''}`}>
+          {/* Community icon */}
+          <div className="sm:block">
+            <Community />
+          </div>
 
-        {/* User icon or login/signup */}
-        <div className={`sm:block ${searchActive ? 'hidden' : 'block'}`}>
-          <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
+          {/* User icon or login/signup */}
+          <div className="sm:block">
+            <UserIcon user={user} handleLoginLogout={handleLoginLogout} />
+          </div>
         </div>
       </header>
-      
+
       {/* Subheader for small screens */}
       <header className="fixed top-16 z-40 bg-white flex justify-center items-center p-2 sm:p-1 shadow w-full sm:hidden">
         <Navigation />
@@ -58,4 +64,3 @@ const Header = () => {
 };
 
 export default Header;
-
